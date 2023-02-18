@@ -1,0 +1,19 @@
+<div class="disaster-details">
+  <img
+    src="{{ disasterData?.disasterImgPath }}"
+    alt=""
+    width="40%"
+    style="margin: 10px; color: #ffff"
+    class="float-end rounded"
+  />
+  <h1>{{ disasterData.title }}</h1>
+  <i>{{ disasterData.userName }}</i>
+  <br /><br />
+  <small style="color: #2a2a2b">{{ disasterData.excerpt }}</small>
+  <div class="lh-lg mt-3">
+    <p [innerHtml]="disasterData.content"></p>
+  </div>
+  <button class="btn btn-theme mt-3" routerLink="/disasters">
+    Back to Disaster
+  </button>
+</div>

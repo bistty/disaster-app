@@ -1,0 +1,72 @@
+<nav class="navbar navbar-expand-lg">
+  <div class="container-fluid">
+    <div class="me-3 d-flex">
+      <mat-icon style="color: #fbb741">local_fire_department</mat-icon>
+      <div class="logo mt-1">
+        <span class="logo1">D</span>
+        <span class="logo2">isaster</span>
+        <span class="logo1">A</span>
+        <span class="logo2">pp</span>
+      </div>
+    </div>
+
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item ps-5">
+          <a
+            class="nav-link active"
+            aria-current="page"
+            routerLink="./disasters"
+            >Home</a
+          >
+        </li>
+        <li class="nav-item ps-5">
+          <a
+            class="nav-link"
+            routerLink="/disasters/create"
+            *ngIf="this.authService.user$ | async"
+            >Create Disaster</a
+          >
+        </li>
+
+        <li class="nav-item ps-5" *ngIf="this.authService.user$ | async">
+          <a class="nav-link" routerLink="./disaster-list">Disaster List</a>
+        </li>
+        <li class="nav-item ps-5" *ngIf="this.isAdmin">
+          <a class="nav-link" routerLink="./admin/dashboard">Dashboard</a>
+        </li>
+      </ul>
+      <form class="d-flex">
+        <input
+          class="form-control me-2 px-5 py-2 search"
+          type="search"
+          #query
+          placeholder="Search"
+          aria-label="Search"
+          (keyup)="filter(query.value)"
+        />
+        <button class="btn outline" type="submit">Search</button>
+      </form>
+      <ul class="navbar-nav ms-5 mb-2 mb-lg-0">
+        <li class="nav-item" *ngIf="!(this.authService.user$ | async)">
+          <a class="nav-link active" aria-current="page" routerLink="./login"
+            >Log in</a
+          >
+        </li>
+        <li class="nav-item" *ngIf="this.authService.user$ | async">
+          <a class="nav-link logout" (click)="logout()">Log out</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="card list" style="width: 18rem" *ngIf="showList">
+  <ul
+    class="list-group list-group-flush"
+    *ngFor="let disaster of filterDisasters"
+  >
+    <li class="list-group-item" [routerLink]="['/disaster', disaster.id]">
+      {{ disaster.data?.title }}
+    </li>
+  </ul>
+</div>

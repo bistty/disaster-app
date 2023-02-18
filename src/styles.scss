@@ -1,1 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~ngx-toastr/toastr";
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+  background-color: #2b3e50;
+}
+
+/* Importing Bootstrap SCSS file. */
+@import "~bootstrap/scss/bootstrap";
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");

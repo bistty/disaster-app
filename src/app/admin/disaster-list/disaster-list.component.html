@@ -1,0 +1,171 @@
+<div *ngIf="this.isAdmin">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card shadow-effect bg-secondary-theme">
+          <div class="card-body text-center">
+            <h3 class="text-theme-center">All Blog disasters</h3>
+            <p>From here you can manage your blog disasters.</p>
+
+            <button
+              class="btn btn-info bg-theme me-3"
+              routerLink="/disasters/create"
+            >
+              Add New disaster
+            </button>
+            <button
+              *ngIf="this.isAdmin"
+              class="btn btn-warning ml-2"
+              routerLink="/"
+            >
+              Back to Dashboard
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mt-5">
+      <div class="col-md-12 mb-5">
+        <div class="card shadow-effect">
+          <div class="card-body">
+            <table class="table row-border hover">
+              <thead>
+                <tr>
+                  <th width="10">No</th>
+                  <th width="200">disaster Image</th>
+                  <th>Title</th>
+                  <!-- <th> Excerpt </th> -->
+                  <th>Category</th>
+                  <th>Date</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <tr *ngFor="let disaster of disasterArray; let i = index">
+                  <td width="10">{{ i + 1 }}</td>
+                  <td width="200" height="100">
+                    <img
+                      src="{{ disaster.data.disasterImgPath }}"
+                      class="img img-fluid"
+                      height="50px"
+                    />
+                  </td>
+                  <td width="200">{{ disaster.data.title }}</td>
+                  <!-- <td width='300'> {{ disaster.data.excerpt }}  </td> -->
+                  <td>{{ disaster.data.category.category }}</td>
+                  <td>{{ disaster.data.createdAt.toMillis() | date }}</td>
+                  <td class="d-flex">
+                    <button
+                      class="btn btn-sm btn-danger me-2"
+                      (click)="
+                        onDelete(disaster.data.disasterImgPath, disaster.id)
+                      "
+                    >
+                      Delete
+                    </button>
+                    <button
+                      *ngIf="!disaster.data.isFeatured"
+                      class="btn btn-sm btn-success ml-2"
+                      (click)="onFeatured(disaster.id, true)"
+                    >
+                      Approved
+                    </button>
+                    <button
+                      *ngIf="disaster.data.isFeatured"
+                      class="btn btn-sm btn-info ml-2"
+                      (click)="onFeatured(disaster.id, false)"
+                    >
+                      Disapproved
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="!this.isAdmin">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card shadow-effect bg-secondary-theme">
+          <div class="card-body text-center">
+            <h3 class="text-theme-center">All Blog disasters</h3>
+            <p>From here you can manage your blog disasters.</p>
+
+            <button
+              class="btn btn-info bg-theme me-3"
+              routerLink="/disasters/create"
+            >
+              Add New disaster
+            </button>
+            <button class="btn btn-warning ml-2" routerLink="/">
+              Back to Home
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mt-5">
+      <div class="col-md-12 mb-5">
+        <div class="card shadow-effect">
+          <div class="card-body">
+            <table class="table row-border hover">
+              <thead>
+                <tr>
+                  <th width="10">No</th>
+                  <th width="200">disaster Image</th>
+                  <th>Title</th>
+                  <!-- <th> Excerpt </th> -->
+                  <th>Category</th>
+                  <th>Date</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <tr *ngFor="let disaster of userDisasterArray; let i = index">
+                  <td width="10">{{ i + 1 }}</td>
+                  <td width="200" height="100">
+                    <img
+                      src="{{ disaster.data.disasterImgPath }}"
+                      class="img img-fluid"
+                      height="50px"
+                    />
+                  </td>
+                  <td width="200">{{ disaster.data.title }}</td>
+                  <!-- <td width='300'> {{ disaster.data.excerpt }}  </td> -->
+                  <td>{{ disaster.data.category.category }}</td>
+                  <td>{{ disaster.data.createdAt.toMillis() | date }}</td>
+                  <td class="d-flex">
+                    <button
+                      class="btn btn-sm btn-warning me-2"
+                      routerLink="../disasters/create"
+                      [queryParams]="{ id: disaster.id }"
+                    >
+                      Edit
+                    </button>
+                    <button
+                      class="btn btn-sm btn-danger me-2"
+                      (click)="
+                        onDelete(disaster.data.disasterImgPath, disaster.id)
+                      "
+                    >
+                      Delete
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

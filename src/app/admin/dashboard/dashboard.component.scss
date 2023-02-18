@@ -1,0 +1,24 @@
+.text-theme-primary {
+  color: #041e50;
+}
+.card {
+  cursor: pointer;
+  text-align: center;
+  height: 200px;
+}
+.bi {
+  font-size: 40px;
+}
+.card:hover {
+  --tw-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+  --tw-shadow-colored: 0 25px 50px -12px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000),
+    var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+  transition: all 0.5s linear;
+  transform: scale(1.05);
+  cursor: pointer;
+}
+.container {
+  height: 100vh;
+  margin-top: 100px;
+}

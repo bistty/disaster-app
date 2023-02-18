@@ -1,0 +1,37 @@
+<div class="mt-2 mb-3"><app-category></app-category></div>
+
+<div class="post-list pb-5">
+  <div
+    class="alert alert-in shadow-effect"
+    role="alert"
+    *ngFor="let disaster of disasterArray"
+  >
+    <div class="d-flex flex-wrap flex-xl-nowrap flex-lg-nowrap flex-md-nowrap">
+      <div class="p-2">
+        <img
+          src="{{ disaster.data.disasterImgPath }}"
+          alt=""
+          class="rounded"
+          width="196px"
+          height="196px"
+        />
+      </div>
+      <div class="p-2">
+        <h2 class="alert-heading lh-1">{{ disaster.data.title }}</h2>
+        <p class="">
+          <i>{{ disaster.data.userName }}</i>
+        </p>
+        <div>{{ disaster.data.excerpt }}</div>
+        <h5 class="alert-heading mt-1">
+          <i>{{ disaster.data.createdAt.toMillis() | date }}</i>
+        </h5>
+        <button
+          class="btn btn-in mt-2"
+          [routerLink]="['/disaster', disaster.id]"
+        >
+          Read More
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

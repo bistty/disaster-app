@@ -1,0 +1,60 @@
+.nav-list {
+  margin-left: 100px;
+}
+.navbar {
+  background-color: #041e50;
+  .nav-link,
+  .navbar-brand {
+    color: #ffff;
+  }
+}
+textarea:hover,
+input:hover,
+textarea:active,
+input:active,
+textarea:focus,
+input:focus,
+button:focus,
+button:active,
+button:hover,
+label:focus,
+.btn:active,
+.btn.active {
+  outline: 0px !important;
+  -webkit-appearance: none;
+  box-shadow: none !important;
+}
+.outline {
+  border: 1px solid #0d3a8f;
+  color: white;
+}
+
+.logo {
+  font-size: 18px;
+  font-weight: 900;
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+.logo1 {
+  font-size: 20px;
+  color: #fff;
+}
+.logo2 {
+  font-size: 15px;
+  color: rgb(251, 245, 245);
+  font-style: italic;
+}
+.logout {
+  cursor: pointer;
+}
+.search {
+  position: relative;
+}
+.list {
+  position: absolute;
+  top: 50px;
+  right: 210px;
+  z-index: 100;
+}
+.list-group-item {
+  cursor: pointer;
+}

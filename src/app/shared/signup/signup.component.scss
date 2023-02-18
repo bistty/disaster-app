@@ -1,0 +1,33 @@
+.container {
+  height: 100vh;
+}
+
+.bg-secondary-theme {
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+  color: #041e50;
+}
+
+form {
+  input {
+    height: 50px;
+  }
+}
+.redirectToLogin {
+  text-align: center;
+  .redirect {
+    color: #2b3e50;
+    cursor: pointer;
+    padding-left: 3px;
+  }
+  .redirect:hover {
+    color: #131d27;
+  }
+}
+.btn-theme {
+  background-color: #041e50;
+  color: #ffff;
+  outline: none;
+  border: none;
+  width: 100%;
+}

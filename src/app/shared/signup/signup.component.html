@@ -1,0 +1,105 @@
+<!-- <button class="btn btn-primary" (click)="login()">Login with Google</button> -->
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-3"></div>
+
+    <div class="col-md-6">
+      <div class="card p-5 shadow-effect bg-secondary-theme mt-5">
+        <div class="card-body">
+          <div class="text-center mb-2">
+            <h2 class="text-theme-primary">Sign Up</h2>
+            <p>Please signup to create an account to post disaster posts</p>
+          </div>
+
+          <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm.value)">
+            <div class="form-group">
+              <input
+                type="text"
+                class="form-control mb-3"
+                placeholder="UserName"
+                name="userName"
+                #userName="ngModel"
+                ngModel
+                required
+                userName
+                [ngClass]="{
+                  'is-invalid': userName.touched && userName.invalid
+                }"
+              />
+
+              <div
+                class="alert alert-danger"
+                *ngIf="userName.touched && userName.invalid"
+              >
+                <div *ngIf="userName.errors?.required">
+                  UserName Cannot be Empty
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <input
+                type="email"
+                class="form-control mb-3"
+                placeholder="Email"
+                name="email"
+                #Email="ngModel"
+                ngModel
+                required
+                email
+                [ngClass]="{ 'is-invalid': Email.touched && Email.invalid }"
+              />
+
+              <div
+                class="alert alert-danger"
+                *ngIf="Email.touched && Email.invalid"
+              >
+                <div *ngIf="Email.errors?.required">Email Cannot be Empty</div>
+                <div *ngIf="Email.errors?.email">
+                  Please Enter a Valid Email Address
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <input
+                type="password"
+                class="form-control mb-2"
+                placeholder="Password"
+                name="password"
+                #Password="ngModel"
+                ngModel
+                required
+                [ngClass]="{
+                  'is-invalid': Password.touched && Password.invalid
+                }"
+              />
+
+              <div
+                class="alert alert-danger"
+                *ngIf="Password.touched && Password.invalid"
+              >
+                Password Cannot be Empty
+              </div>
+            </div>
+
+            <button
+              class="btn btn-block btn-theme mt-3"
+              [disabled]="loginForm.invalid"
+            >
+              Sign Up
+            </button>
+          </form>
+          <div class="redirectToLogin mt-2">
+            <span
+              >Already have an account?
+              <span class="redirect" routerLink="/login">Log In</span></span
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-3"></div>
+  </div>
+</div>

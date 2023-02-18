@@ -1,0 +1,22 @@
+.post-list {
+  width: 70%;
+  margin: auto;
+}
+.alert-in {
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+    rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+.alert-in:hover {
+  --tw-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+  --tw-shadow-colored: 0 25px 50px -12px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000),
+    var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+  transition: all 0.5s linear;
+  transform: scale(1.05);
+  cursor: pointer;
+}
+
+.btn-in {
+  background-color: #041e50;
+  color: #bbb;
+}

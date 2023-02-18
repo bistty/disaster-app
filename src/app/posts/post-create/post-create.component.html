@@ -1,0 +1,311 @@
+<!-- <div class="d-flex justify-content-between box">
+  <form [formGroup]="disasterForm" (ngSubmit)="onSubmit()" class="mb-5">
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Title</label>
+      <input
+        class="form-control"
+        type="text"
+        placeholder="Disaster Title"
+        required
+        (keyup)="onTitleChanged($event)"
+        formControlName="title"
+        [ngClass]="{ 'is-invalid': dc.title.touched && dc.title.invalid }"
+      />
+      <div *ngIf="dc.title.errors?.required">
+        <div
+          class="alert alert-danger"
+          *ngIf="dc.title.touched && dc.title.invalid"
+        >
+          Title is required.
+        </div>
+      </div>
+      <div *ngIf="dc.title.errors?.minlength">
+        <div
+          class="alert alert-danger"
+          *ngIf="dc.title.touched && dc.title.invalid"
+        >
+          Title must be atleast 10 charectors long.
+        </div>
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Description</label>
+      <textarea
+        cols="30"
+        rows="3"
+        class="form-control"
+        placeholder="Disaster Description"
+        formControlName="description"
+        [ngClass]="{
+          'is-invalid': dc.description.touched && dc.description.invalid
+        }"
+      ></textarea>
+      <div *ngIf="dc.description.errors?.required">
+        <div
+          class="alert alert-danger"
+          *ngIf="dc.description.touched && dc.description.invalid"
+        >
+          Description is required.
+        </div>
+      </div>
+      <div *ngIf="dc.description.errors?.minlength">
+        <div
+          class="alert alert-danger"
+          *ngIf="dc.description.touched && dc.description.invalid"
+        >
+          Description must be atleast 50 charectors long.
+        </div>
+      </div>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Content</label>
+      <angular-editor
+        placeholder="Add your content here"
+        formControlName="content"
+      ></angular-editor>
+      <div *ngIf="dc.content.errors?.required">
+        <div
+          class="alert alert-danger"
+          *ngIf="dc.content.touched && dc.content.invalid"
+        >
+          Content is required.
+        </div>
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for=""> Please Select a disaster category</label>
+      <select
+        class="form-control"
+        formControlName="category"
+        [ngClass]="{ 'is-invalid': dc.category.touched && dc.category.invalid }"
+      >
+        <option value="">Please select a category</option>
+        <option
+          *ngFor="let category of categories"
+          value="{{ category.id }}-{{ category.data.category }}"
+        >
+          {{ category.data.category }}
+        </option>
+      </select>
+
+      <div *ngIf="dc.category.errors?.required">
+        <div
+          class="alert alert-danger"
+          *ngIf="dc.category.touched && dc.category.invalid"
+        >
+          Please select a disaster category.
+        </div>
+      </div>
+    </div>
+    <div class="mb-3">
+      <img [src]="imgSrc" class="form-control img-fluid img-preview" />
+      <button class="btn btn-primary rela">Upload Image</button>
+      <input
+        class="form-control"
+        type="file"
+        accept="image/*"
+        (change)="showPreview($event)"
+        id="uploadFile"
+      />
+      <div *ngIf="dc.disasterImg.errors?.required">
+        <div
+          class="alert alert-danger"
+          *ngIf="dc.disasterImg.touched && dc.disasterImg.invalid"
+        >
+          Disaster Image is required.
+        </div>
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-disaster">disaster</button>
+  </form>
+  <div class="ms-10">
+    <div>
+
+      <mat-card
+        class="example-card shadow-effect"
+        *ngFor="let disaster of disasterArray"
+      >
+        <mat-card-title-group>
+          <mat-card-title>{{ disaster.title }}</mat-card-title>
+          <mat-card-subtitle
+            ><i>{{ disaster.userName }}</i></mat-card-subtitle
+          >
+          <img mat-card-sm-image class="img-thumbnail" [src]="disaster.imgUrl" />
+        </mat-card-title-group>
+        <mat-card-content>
+          {{ disaster.summary }}
+        </mat-card-content>
+        <mat-card-actions class="text-end">
+          <mat-icon class="text-danger me-3">delete</mat-icon>
+          <mat-icon class="text-success pointer">edit</mat-icon>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+</div>  -->
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 text-center">
+      <h3 class="text-theme-primary">Add disaster</h3>
+      <p class="mb-5">You can {{ formStatus }} disaster here</p>
+    </div>
+  </div>
+
+  <div>
+    <form [formGroup]="disasterForm" (ngSubmit)="onSubmit()">
+      <div class="row">
+        <div class="col-md-7 me-5">
+          <div class="form-group">
+            <label> Title </label>
+            <input
+              type="text"
+              class="form-control mb-4"
+              (keyup)="onTitleChanged($event)"
+              formControlName="title"
+              [ngClass]="{
+                'is-invalid': dc.title.touched && dc.title.invalid
+              }"
+            />
+            <div *ngIf="dc.title.errors?.required">
+              <div
+                class="alert alert-danger"
+                *ngIf="dc.title.touched && dc.title.invalid"
+              >
+                Title is required.
+              </div>
+            </div>
+            <div *ngIf="dc.title.errors?.minlength">
+              <div
+                class="alert alert-danger"
+                *ngIf="dc.title.touched && dc.title.invalid"
+              >
+                Title must be atleast 10 charectors long.
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label> Excerpt </label>
+            <textarea
+              cols="30"
+              rows="10"
+              class="form-control"
+              formControlName="excerpt"
+              [ngClass]="{
+                'is-invalid': dc.excerpt.touched && dc.excerpt.invalid
+              }"
+            ></textarea>
+            <div *ngIf="dc.excerpt.errors?.required">
+              <div
+                class="alert alert-danger"
+                *ngIf="dc.excerpt.touched && dc.excerpt.invalid"
+              >
+                Excerpt is required.
+              </div>
+            </div>
+            <div *ngIf="dc.excerpt.errors?.minlength">
+              <div
+                class="alert alert-danger"
+                *ngIf="dc.excerpt.touched && dc.excerpt.invalid"
+              >
+                Excerpt must be atleast 50 charectors long.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="form-group">
+            <label for=""> Please Select a disaster category</label>
+            <select
+              class="form-control mb-4"
+              formControlName="category"
+              [ngClass]="{
+                'is-invalid': dc.category.touched && dc.category.invalid
+              }"
+            >
+              <option value="">Please select a category</option>
+              <option
+                *ngFor="let category of categories"
+                value="{{ category.id }}-{{ category.data.category }}"
+              >
+                {{ category.data.category }}
+              </option>
+            </select>
+
+            <div *ngIf="dc.category.errors?.required">
+              <div
+                class="alert alert-danger"
+                *ngIf="dc.category.touched && dc.category.invalid"
+              >
+                Please select a disaster category.
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for=""> disaster Image </label>
+            <img [src]="imgSrc" class="form-control img-fluid img-preview" />
+            <input
+              type="file"
+              class="form-control mb-4"
+              accept="image/*"
+              (change)="showPreview($event)"
+              formControlName="disasterImg"
+              [ngClass]="{
+                'is-invalid': dc.disasterImg.touched && dc.disasterImg.invalid
+              }"
+            />
+            <div *ngIf="dc.disasterImg.errors?.required">
+              <div
+                class="alert alert-danger"
+                *ngIf="dc.disasterImg.touched && dc.disasterImg.invalid"
+              >
+                disaster Image is required.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row mt-3 mb-5">
+        <div class="col-md-12">
+          <div class="card shadow-effect">
+            <div class="card-body">
+              <div class="form-group">
+                <label for=""> Content </label>
+                <angular-editor
+                  placeholder="Add your content here"
+                  formControlName="content"
+                ></angular-editor>
+                <div *ngIf="dc.content.errors?.required">
+                  <div
+                    class="alert alert-danger"
+                    *ngIf="dc.content.touched && dc.content.invalid"
+                  >
+                    Content is required.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-12 text-center mt-5">
+          <button
+            class="btn btn-info bg-theme me-2"
+            [disabled]="disasterForm.invalid"
+            routerLink="../disaster-list"
+          >
+            {{ formStatus }} disaster
+          </button>
+          <button class="btn btn-warning ml-3" routerLink="/disasters">
+            Back to disaster
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
